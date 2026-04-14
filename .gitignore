@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+bower_components/
+
+# Build output
+dist/
+build/
+tmp/
+out-tsc/
+
+# Angular cache
+.angular/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Coverage
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.sass-cache/
+connect.lock
+libpeerconnection.log
+testem.log
+typings/
+
+# System files
+*.seed
+*.pid
+*.pid.lock
+
+# Package manager locks (keep one, ignore others as needed)
+# package-lock.json
+# yarn.lock
+
+# Compiled output
+*.js.map

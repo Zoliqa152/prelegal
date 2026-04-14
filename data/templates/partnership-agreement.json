@@ -1,0 +1,69 @@
+{
+  "id": "partnership-agreement",
+  "name": "Partnership Agreement",
+  "category": "Business",
+  "description": "A contract between two or more partners establishing a business partnership, defining roles, profit sharing, and governance.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "partnership_name", "label": "Partnership Name", "type": "text", "required": true },
+    { "key": "partner_one_name", "label": "Partner One Name", "type": "text", "required": true },
+    { "key": "partner_one_address", "label": "Partner One Address", "type": "text", "required": true },
+    { "key": "partner_one_contribution", "label": "Partner One Capital Contribution", "type": "number", "required": true },
+    { "key": "partner_one_ownership_percent", "label": "Partner One Ownership (%)", "type": "number", "required": true, "default": 50 },
+    { "key": "partner_two_name", "label": "Partner Two Name", "type": "text", "required": true },
+    { "key": "partner_two_address", "label": "Partner Two Address", "type": "text", "required": true },
+    { "key": "partner_two_contribution", "label": "Partner Two Capital Contribution", "type": "number", "required": true },
+    { "key": "partner_two_ownership_percent", "label": "Partner Two Ownership (%)", "type": "number", "required": true, "default": 50 },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "business_purpose", "label": "Business Purpose", "type": "textarea", "required": true },
+    { "key": "fiscal_year_end", "label": "Fiscal Year End", "type": "select", "required": true, "options": ["March 31", "June 30", "September 30", "December 31"], "default": "December 31" },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Partnership Agreement (\"Agreement\") is entered into as of {{effective_date}} by and between:\n\n{{partner_one_name}}, with an address at {{partner_one_address}} (\"Partner One\"), and\n\n{{partner_two_name}}, with an address at {{partner_two_address}} (\"Partner Two\").\n\nPartner One and Partner Two are collectively referred to as the \"Partners.\""
+    },
+    {
+      "title": "Formation and Name",
+      "content": "The Partners hereby form a general partnership under the name \"{{partnership_name}}\" (the \"Partnership\"). The Partnership shall conduct business under this name or such other names as the Partners may agree upon in writing."
+    },
+    {
+      "title": "Purpose",
+      "content": "The purpose of the Partnership is to engage in the following business activities:\n\n{{business_purpose}}\n\nThe Partnership may also engage in any other lawful business activity as the Partners may agree upon from time to time."
+    },
+    {
+      "title": "Capital Contributions",
+      "content": "Each Partner shall make the following initial capital contributions to the Partnership:\n\n- {{partner_one_name}}: ${{partner_one_contribution}}\n- {{partner_two_name}}: ${{partner_two_contribution}}\n\nAdditional capital contributions may be made by mutual agreement of the Partners. No Partner shall be required to make additional contributions without their consent."
+    },
+    {
+      "title": "Profit and Loss Sharing",
+      "content": "The net profits and losses of the Partnership shall be allocated among the Partners in proportion to their ownership interests:\n\n- {{partner_one_name}}: {{partner_one_ownership_percent}}%\n- {{partner_two_name}}: {{partner_two_ownership_percent}}%\n\nDistributions of profits shall be made at such times and in such amounts as the Partners may agree, but no less frequently than annually. The Partnership's fiscal year shall end on {{fiscal_year_end}}."
+    },
+    {
+      "title": "Management and Authority",
+      "content": "Each Partner shall have an equal right to participate in the management of the Partnership. Decisions relating to the ordinary course of business shall be made by majority agreement of the Partners. The following decisions shall require the unanimous consent of all Partners:\n\n(a) Sale or transfer of Partnership assets outside the ordinary course of business;\n(b) Incurring debt in excess of $10,000;\n(c) Admitting new Partners;\n(d) Amending this Agreement;\n(e) Dissolution of the Partnership."
+    },
+    {
+      "title": "Partner Duties",
+      "content": "Each Partner shall devote such time and attention to the Partnership business as is reasonably necessary. Each Partner owes a fiduciary duty to the other Partners and to the Partnership, including duties of loyalty and care. No Partner shall engage in any business activity that directly competes with the Partnership without the written consent of the other Partners."
+    },
+    {
+      "title": "Withdrawal and Dissolution",
+      "content": "A Partner may withdraw from the Partnership by providing ninety (90) days' written notice to the other Partners. Upon withdrawal, the withdrawing Partner shall be entitled to receive the value of their interest as determined by an independent valuation. The Partnership shall dissolve upon the occurrence of any of the following:\n\n(a) Unanimous agreement of the Partners;\n(b) The withdrawal, bankruptcy, or death of a Partner, unless the remaining Partners elect to continue;\n(c) Any event that makes it unlawful for the Partnership to continue."
+    },
+    {
+      "title": "Dispute Resolution",
+      "content": "Any dispute arising out of or relating to this Agreement shall first be submitted to mediation. If mediation is unsuccessful, the dispute shall be resolved by binding arbitration in accordance with the rules of the American Arbitration Association. The costs of arbitration shall be shared equally by the Partners."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Partners have executed this Partnership Agreement as of the date first written above.\n\nPartner One: {{partner_one_name}}\nSignature: ___________________________\nDate: ___________________________\n\nPartner Two: {{partner_two_name}}\nSignature: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

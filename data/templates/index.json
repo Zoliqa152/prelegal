@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "templates": [
+    {
+      "id": "nda",
+      "name": "Non-Disclosure Agreement",
+      "category": "Confidentiality",
+      "file": "nda.json"
+    },
+    {
+      "id": "employment-agreement",
+      "name": "Employment Agreement",
+      "category": "Employment",
+      "file": "employment-agreement.json"
+    },
+    {
+      "id": "independent-contractor-agreement",
+      "name": "Independent Contractor Agreement",
+      "category": "Employment",
+      "file": "independent-contractor-agreement.json"
+    },
+    {
+      "id": "non-compete-agreement",
+      "name": "Non-Compete Agreement",
+      "category": "Employment",
+      "file": "non-compete-agreement.json"
+    },
+    {
+      "id": "lease-agreement",
+      "name": "Residential Lease Agreement",
+      "category": "Real Estate",
+      "file": "lease-agreement.json"
+    },
+    {
+      "id": "service-agreement",
+      "name": "Service Agreement",
+      "category": "Business",
+      "file": "service-agreement.json"
+    },
+    {
+      "id": "partnership-agreement",
+      "name": "Partnership Agreement",
+      "category": "Business",
+      "file": "partnership-agreement.json"
+    },
+    {
+      "id": "loan-agreement",
+      "name": "Loan Agreement",
+      "category": "Finance",
+      "file": "loan-agreement.json"
+    },
+    {
+      "id": "software-license-agreement",
+      "name": "Software License Agreement",
+      "category": "Technology",
+      "file": "software-license-agreement.json"
+    },
+    {
+      "id": "power-of-attorney",
+      "name": "Power of Attorney",
+      "category": "Estate Planning",
+      "file": "power-of-attorney.json"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "service-agreement",
+  "name": "Service Agreement",
+  "category": "Business",
+  "description": "A contract between a service provider and client defining the services to be performed, payment terms, and responsibilities.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "provider_name", "label": "Service Provider Name", "type": "text", "required": true },
+    { "key": "provider_address", "label": "Service Provider Address", "type": "text", "required": true },
+    { "key": "client_name", "label": "Client Name", "type": "text", "required": true },
+    { "key": "client_address", "label": "Client Address", "type": "text", "required": true },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "service_description", "label": "Description of Services", "type": "textarea", "required": true },
+    { "key": "service_fee", "label": "Service Fee", "type": "number", "required": true },
+    { "key": "fee_structure", "label": "Fee Structure", "type": "select", "required": true, "options": ["Fixed Fee", "Hourly Rate", "Monthly Retainer", "Per Project"], "default": "Fixed Fee" },
+    { "key": "payment_terms_days", "label": "Payment Terms (Days)", "type": "number", "required": true, "default": 30 },
+    { "key": "contract_duration_months", "label": "Contract Duration (Months)", "type": "number", "required": true, "default": 12 },
+    { "key": "termination_notice_days", "label": "Termination Notice Period (Days)", "type": "number", "required": true, "default": 30 },
+    { "key": "liability_cap_amount", "label": "Liability Cap Amount", "type": "number", "required": false },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Service Agreement (\"Agreement\") is entered into as of {{effective_date}} by and between:\n\n{{provider_name}}, with an address at {{provider_address}} (the \"Service Provider\"), and\n\n{{client_name}}, with an address at {{client_address}} (the \"Client\").\n\nThe Service Provider and Client are collectively referred to as the \"Parties.\""
+    },
+    {
+      "title": "Services",
+      "content": "The Service Provider agrees to perform the following services (the \"Services\") for the Client:\n\n{{service_description}}\n\nThe Service Provider shall perform the Services in a professional and competent manner, consistent with generally accepted industry standards and practices."
+    },
+    {
+      "title": "Compensation",
+      "content": "The Client agrees to pay the Service Provider a {{fee_structure}} of ${{service_fee}} for the Services rendered. Payment shall be due within {{payment_terms_days}} days of the Service Provider's invoice. Invoices not paid within the specified period may be subject to a late charge of 1.5% per month on the outstanding balance."
+    },
+    {
+      "title": "Term",
+      "content": "This Agreement shall commence on {{effective_date}} and shall continue for a period of {{contract_duration_months}} months, unless earlier terminated in accordance with this Agreement. This Agreement may be renewed by mutual written agreement of the Parties."
+    },
+    {
+      "title": "Responsibilities of the Client",
+      "content": "The Client shall:\n\n(a) Provide the Service Provider with timely access to all information, materials, and resources reasonably necessary for the performance of the Services;\n(b) Designate a representative to serve as the primary point of contact;\n(c) Review and provide feedback on deliverables within a reasonable timeframe;\n(d) Make payments in accordance with the terms of this Agreement."
+    },
+    {
+      "title": "Confidentiality",
+      "content": "Each Party acknowledges that it may receive confidential information from the other Party in connection with this Agreement. Each Party agrees to maintain the confidentiality of such information and not to disclose it to any third party without the prior written consent of the disclosing Party. This obligation shall survive the termination of this Agreement for a period of two (2) years."
+    },
+    {
+      "title": "Limitation of Liability",
+      "content": "To the maximum extent permitted by applicable law, the Service Provider's total liability under this Agreement shall not exceed the total fees paid by the Client under this Agreement during the twelve (12) months preceding the event giving rise to the claim. In no event shall either Party be liable for any indirect, incidental, special, consequential, or punitive damages."
+    },
+    {
+      "title": "Termination",
+      "content": "Either Party may terminate this Agreement by providing {{termination_notice_days}} days' written notice to the other Party. The Client may terminate this Agreement immediately if the Service Provider materially breaches this Agreement and fails to cure such breach within fifteen (15) days of written notice. Upon termination, the Client shall pay the Service Provider for all Services satisfactorily performed up to the date of termination."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Service Agreement as of the date first written above.\n\nService Provider: {{provider_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________\n\nClient: {{client_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

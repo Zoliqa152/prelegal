@@ -1,0 +1,52 @@
+{
+  "id": "nda",
+  "name": "Non-Disclosure Agreement",
+  "category": "Confidentiality",
+  "description": "A mutual or one-way agreement to protect confidential information shared between parties.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "disclosing_party_name", "label": "Disclosing Party Name", "type": "text", "required": true },
+    { "key": "disclosing_party_address", "label": "Disclosing Party Address", "type": "text", "required": true },
+    { "key": "receiving_party_name", "label": "Receiving Party Name", "type": "text", "required": true },
+    { "key": "receiving_party_address", "label": "Receiving Party Address", "type": "text", "required": true },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "confidentiality_period_years", "label": "Confidentiality Period (Years)", "type": "number", "required": true, "default": 2 },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true },
+    { "key": "nda_type", "label": "NDA Type", "type": "select", "required": true, "options": ["Mutual", "One-Way"], "default": "Mutual" }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Non-Disclosure Agreement (\"Agreement\") is entered into as of {{effective_date}} (the \"Effective Date\") by and between:\n\n{{disclosing_party_name}}, with an address at {{disclosing_party_address}} (the \"Disclosing Party\"), and\n\n{{receiving_party_name}}, with an address at {{receiving_party_address}} (the \"Receiving Party\").\n\nThe Disclosing Party and the Receiving Party are collectively referred to as the \"Parties\" and individually as a \"Party.\""
+    },
+    {
+      "title": "Definition of Confidential Information",
+      "content": "\"Confidential Information\" means any and all non-public information, in any form or medium, whether written, oral, electronic, or visual, that is disclosed by the Disclosing Party to the Receiving Party, including but not limited to:\n\n(a) Trade secrets, inventions, patents, copyrights, trademarks, and other intellectual property;\n(b) Business plans, strategies, forecasts, and financial information;\n(c) Customer and supplier lists, pricing information, and marketing plans;\n(d) Technical data, designs, specifications, and software;\n(e) Any information that is marked as \"confidential\" or that a reasonable person would understand to be confidential."
+    },
+    {
+      "title": "Obligations of Receiving Party",
+      "content": "The Receiving Party agrees to:\n\n(a) Hold all Confidential Information in strict confidence;\n(b) Not disclose Confidential Information to any third party without the prior written consent of the Disclosing Party;\n(c) Use the Confidential Information solely for the purpose of evaluating or engaging in a business relationship with the Disclosing Party;\n(d) Take reasonable measures to protect the secrecy of and avoid disclosure or use of Confidential Information, using at least the same degree of care as it uses to protect its own confidential information, but no less than reasonable care;\n(e) Limit access to Confidential Information to those employees, agents, or representatives who have a need to know and who are bound by confidentiality obligations at least as restrictive as those contained herein."
+    },
+    {
+      "title": "Exclusions",
+      "content": "The obligations of this Agreement shall not apply to any information that:\n\n(a) Is or becomes publicly available through no fault of the Receiving Party;\n(b) Was already known to the Receiving Party prior to disclosure, as documented by written records;\n(c) Is independently developed by the Receiving Party without use of or reference to the Confidential Information;\n(d) Is rightfully received from a third party without restriction on disclosure;\n(e) Is required to be disclosed by law, regulation, or court order, provided the Receiving Party gives the Disclosing Party prompt written notice and cooperates in seeking a protective order."
+    },
+    {
+      "title": "Term and Termination",
+      "content": "This Agreement shall remain in effect for a period of {{confidentiality_period_years}} years from the Effective Date. Either Party may terminate this Agreement with thirty (30) days' prior written notice. The obligations of confidentiality shall survive termination for a period of {{confidentiality_period_years}} years."
+    },
+    {
+      "title": "Return of Materials",
+      "content": "Upon termination of this Agreement or upon request by the Disclosing Party, the Receiving Party shall promptly return or destroy all copies of Confidential Information in its possession and certify in writing that it has done so."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Non-Disclosure Agreement as of the Effective Date.\n\nDisclosing Party: {{disclosing_party_name}}\nSignature: ___________________________\nDate: ___________________________\n\nReceiving Party: {{receiving_party_name}}\nSignature: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

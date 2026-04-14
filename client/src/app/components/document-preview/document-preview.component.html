@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Document Preview</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="preview-actions">
+      <button mat-raised-button color="primary" (click)="downloadPdf()">
+        <mat-icon>download</mat-icon>
+        Download PDF
+      </button>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="document-body">
+      <h2 class="document-title">{{ documentTitle }}</h2>
+
+      @for (section of sections; track $index) {
+        <div class="section">
+          <h3 class="section-title">{{ section.title }}</h3>
+          <p class="section-content">{{ section.content }}</p>
+        </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

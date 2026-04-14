@@ -1,0 +1,13 @@
+.spacer {
+  flex: 1;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+main {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}

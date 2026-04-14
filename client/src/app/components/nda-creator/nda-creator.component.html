@@ -1,0 +1,22 @@
+@if (template()) {
+  <div class="creator-layout">
+    <div class="form-panel">
+      <app-document-form
+        [fields]="template()!.fields"
+        [formGroup]="formGroup()"
+      />
+    </div>
+    <div class="preview-panel">
+      <app-document-preview
+        [sections]="resolvedSections()"
+        [documentTitle]="template()!.name"
+        [ndaType]="ndaType()"
+      />
+    </div>
+  </div>
+} @else {
+  <div class="loading">
+    <mat-spinner diameter="48"></mat-spinner>
+    <p>Loading template...</p>
+  </div>
+}

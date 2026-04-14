@@ -1,0 +1,69 @@
+{
+  "id": "software-license-agreement",
+  "name": "Software License Agreement",
+  "category": "Technology",
+  "description": "A contract granting a licensee the right to use software under specified terms, including scope of use, restrictions, and warranties.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "licensor_name", "label": "Licensor Name", "type": "text", "required": true },
+    { "key": "licensor_address", "label": "Licensor Address", "type": "text", "required": true },
+    { "key": "licensee_name", "label": "Licensee Name", "type": "text", "required": true },
+    { "key": "licensee_address", "label": "Licensee Address", "type": "text", "required": true },
+    { "key": "software_name", "label": "Software Name", "type": "text", "required": true },
+    { "key": "software_description", "label": "Software Description", "type": "textarea", "required": true },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "license_type", "label": "License Type", "type": "select", "required": true, "options": ["Perpetual", "Subscription", "Trial"], "default": "Subscription" },
+    { "key": "license_fee", "label": "License Fee", "type": "number", "required": true },
+    { "key": "fee_frequency", "label": "Fee Frequency", "type": "select", "required": true, "options": ["One-Time", "Monthly", "Annually"], "default": "Annually" },
+    { "key": "number_of_users", "label": "Number of Authorized Users", "type": "number", "required": true, "default": 1 },
+    { "key": "support_included", "label": "Support Included", "type": "select", "required": true, "options": ["Yes", "No"], "default": "Yes" },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Software License Agreement (\"Agreement\") is entered into as of {{effective_date}} by and between:\n\n{{licensor_name}}, with an address at {{licensor_address}} (the \"Licensor\"), and\n\n{{licensee_name}}, with an address at {{licensee_address}} (the \"Licensee\").\n\nThe Licensor and Licensee are collectively referred to as the \"Parties.\""
+    },
+    {
+      "title": "Grant of License",
+      "content": "Subject to the terms and conditions of this Agreement, the Licensor hereby grants the Licensee a non-exclusive, non-transferable {{license_type}} license to use the software known as \"{{software_name}}\" (the \"Software\"). The Software is described as follows:\n\n{{software_description}}\n\nThe license is granted for up to {{number_of_users}} authorized user(s)."
+    },
+    {
+      "title": "License Restrictions",
+      "content": "The Licensee shall not:\n\n(a) Copy, modify, or create derivative works of the Software, except as expressly permitted;\n(b) Reverse engineer, decompile, or disassemble the Software;\n(c) Sublicense, sell, lease, or otherwise transfer the Software to any third party;\n(d) Remove or alter any proprietary notices, labels, or marks on the Software;\n(e) Use the Software for any unlawful purpose or in violation of any applicable regulations;\n(f) Exceed the number of authorized users specified in this Agreement."
+    },
+    {
+      "title": "Fees and Payment",
+      "content": "The Licensee agrees to pay the Licensor a license fee of ${{license_fee}} on a {{fee_frequency}} basis. Payment is due within thirty (30) days of the invoice date. Failure to pay may result in suspension or termination of the license."
+    },
+    {
+      "title": "Support and Maintenance",
+      "content": "Technical support is included with this license: {{support_included}}. If support is included, the Licensor shall provide reasonable technical support during normal business hours, including bug fixes, patches, and updates at the Licensor's discretion. Major version upgrades may require additional fees."
+    },
+    {
+      "title": "Intellectual Property",
+      "content": "The Software and all copies thereof are proprietary to the Licensor and title thereto remains in the Licensor. All rights in the Software not specifically granted in this Agreement are reserved to the Licensor. The Licensee acknowledges that the Software contains trade secrets and confidential information of the Licensor."
+    },
+    {
+      "title": "Warranty Disclaimer",
+      "content": "THE SOFTWARE IS PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. THE LICENSOR DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR THAT ITS OPERATION WILL BE UNINTERRUPTED."
+    },
+    {
+      "title": "Limitation of Liability",
+      "content": "IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE USE OF THE SOFTWARE, REGARDLESS OF THE CAUSE OF ACTION OR THE THEORY OF LIABILITY. THE LICENSOR'S TOTAL LIABILITY SHALL NOT EXCEED THE TOTAL FEES PAID BY THE LICENSEE DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM."
+    },
+    {
+      "title": "Termination",
+      "content": "This Agreement shall remain in effect for the duration of the license type selected. Either Party may terminate this Agreement if the other Party materially breaches this Agreement and fails to cure such breach within thirty (30) days of written notice. Upon termination, the Licensee shall cease all use of the Software and destroy all copies in its possession."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Software License Agreement as of the date first written above.\n\nLicensor: {{licensor_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________\n\nLicensee: {{licensee_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

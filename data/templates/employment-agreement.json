@@ -1,0 +1,69 @@
+{
+  "id": "employment-agreement",
+  "name": "Employment Agreement",
+  "category": "Employment",
+  "description": "A contract between an employer and employee outlining terms and conditions of employment.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "employer_name", "label": "Employer Name", "type": "text", "required": true },
+    { "key": "employer_address", "label": "Employer Address", "type": "text", "required": true },
+    { "key": "employee_name", "label": "Employee Name", "type": "text", "required": true },
+    { "key": "employee_address", "label": "Employee Address", "type": "text", "required": true },
+    { "key": "job_title", "label": "Job Title", "type": "text", "required": true },
+    { "key": "start_date", "label": "Start Date", "type": "date", "required": true },
+    { "key": "salary_amount", "label": "Annual Salary", "type": "number", "required": true },
+    { "key": "pay_frequency", "label": "Pay Frequency", "type": "select", "required": true, "options": ["Weekly", "Bi-Weekly", "Semi-Monthly", "Monthly"], "default": "Bi-Weekly" },
+    { "key": "work_hours_per_week", "label": "Work Hours Per Week", "type": "number", "required": true, "default": 40 },
+    { "key": "vacation_days", "label": "Vacation Days Per Year", "type": "number", "required": true, "default": 15 },
+    { "key": "probation_period_months", "label": "Probation Period (Months)", "type": "number", "required": false, "default": 3 },
+    { "key": "notice_period_weeks", "label": "Notice Period (Weeks)", "type": "number", "required": true, "default": 2 },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Employment Agreement (\"Agreement\") is entered into as of {{start_date}} by and between:\n\n{{employer_name}}, with an address at {{employer_address}} (the \"Employer\"), and\n\n{{employee_name}}, with an address at {{employee_address}} (the \"Employee\")."
+    },
+    {
+      "title": "Position and Duties",
+      "content": "The Employer agrees to employ the Employee in the position of {{job_title}}. The Employee shall perform all duties and responsibilities associated with this position as may be reasonably assigned by the Employer. The Employee agrees to devote their full professional time, attention, and best efforts to the performance of their duties."
+    },
+    {
+      "title": "Compensation",
+      "content": "The Employer shall pay the Employee an annual salary of ${{salary_amount}}, payable on a {{pay_frequency}} basis, subject to applicable withholdings and deductions. The Employee's salary shall be reviewed annually and may be adjusted at the Employer's discretion."
+    },
+    {
+      "title": "Work Schedule",
+      "content": "The Employee's standard work schedule shall be {{work_hours_per_week}} hours per week. The specific work hours and schedule shall be determined by the Employer and may be adjusted as needed to meet business requirements."
+    },
+    {
+      "title": "Benefits",
+      "content": "The Employee shall be entitled to {{vacation_days}} days of paid vacation per year, accrued in accordance with the Employer's vacation policy. The Employee shall also be eligible to participate in the Employer's benefits programs, including health insurance, retirement plans, and other benefits as may be offered from time to time, subject to the terms and conditions of such programs."
+    },
+    {
+      "title": "Probationary Period",
+      "content": "The Employee shall be subject to a probationary period of {{probation_period_months}} months commencing on the start date. During this period, the Employer may terminate this Agreement at any time with or without cause upon providing written notice."
+    },
+    {
+      "title": "Confidentiality",
+      "content": "The Employee acknowledges that during the course of employment, they may have access to confidential and proprietary information belonging to the Employer. The Employee agrees to hold all such information in strict confidence and not to disclose, publish, or otherwise disseminate such information to any third party without the prior written consent of the Employer. This obligation shall survive the termination of this Agreement."
+    },
+    {
+      "title": "Termination",
+      "content": "Either party may terminate this Agreement by providing {{notice_period_weeks}} weeks' written notice to the other party. The Employer may terminate this Agreement immediately for cause, including but not limited to: material breach of this Agreement, gross misconduct, dishonesty, or conviction of a criminal offence. Upon termination, the Employee shall return all Employer property and Confidential Information."
+    },
+    {
+      "title": "Non-Compete and Non-Solicitation",
+      "content": "For a period of twelve (12) months following termination of employment, the Employee agrees not to:\n\n(a) Engage in any business that directly competes with the Employer within a reasonable geographic area;\n(b) Solicit or attempt to solicit any clients, customers, or accounts of the Employer;\n(c) Recruit or attempt to recruit any employees of the Employer."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Employment Agreement as of the date first written above.\n\nEmployer: {{employer_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________\n\nEmployee: {{employee_name}}\nSignature: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

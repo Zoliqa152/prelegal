@@ -1,0 +1,64 @@
+{
+  "id": "loan-agreement",
+  "name": "Loan Agreement",
+  "category": "Finance",
+  "description": "A contract between a lender and borrower specifying the terms for a loan, including repayment schedule, interest rate, and collateral.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "lender_name", "label": "Lender Name", "type": "text", "required": true },
+    { "key": "lender_address", "label": "Lender Address", "type": "text", "required": true },
+    { "key": "borrower_name", "label": "Borrower Name", "type": "text", "required": true },
+    { "key": "borrower_address", "label": "Borrower Address", "type": "text", "required": true },
+    { "key": "loan_amount", "label": "Loan Amount", "type": "number", "required": true },
+    { "key": "interest_rate", "label": "Annual Interest Rate (%)", "type": "number", "required": true },
+    { "key": "loan_date", "label": "Loan Date", "type": "date", "required": true },
+    { "key": "maturity_date", "label": "Maturity Date", "type": "date", "required": true },
+    { "key": "repayment_frequency", "label": "Repayment Frequency", "type": "select", "required": true, "options": ["Monthly", "Quarterly", "Annually", "Lump Sum at Maturity"], "default": "Monthly" },
+    { "key": "late_payment_penalty_percent", "label": "Late Payment Penalty (%)", "type": "number", "required": true, "default": 5 },
+    { "key": "collateral_description", "label": "Collateral Description", "type": "textarea", "required": false },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Loan Agreement (\"Agreement\") is entered into as of {{loan_date}} by and between:\n\n{{lender_name}}, with an address at {{lender_address}} (the \"Lender\"), and\n\n{{borrower_name}}, with an address at {{borrower_address}} (the \"Borrower\").\n\nThe Lender and Borrower are collectively referred to as the \"Parties.\""
+    },
+    {
+      "title": "Loan Terms",
+      "content": "The Lender agrees to loan the Borrower the principal sum of ${{loan_amount}} (the \"Loan\"). The Loan shall be disbursed to the Borrower on or about the date of this Agreement. The Borrower acknowledges receipt of the Loan amount and agrees to repay the Loan in accordance with the terms set forth herein."
+    },
+    {
+      "title": "Interest",
+      "content": "The outstanding principal balance of the Loan shall bear interest at a fixed annual rate of {{interest_rate}}%, calculated on the basis of a 365-day year. Interest shall accrue from the date of disbursement and shall be computed on the outstanding principal balance."
+    },
+    {
+      "title": "Repayment",
+      "content": "The Borrower shall repay the Loan in {{repayment_frequency}} instalments commencing on the date that is one payment period after the date of this Agreement and continuing until the maturity date of {{maturity_date}}. Each instalment shall consist of principal and accrued interest. The entire outstanding principal balance, together with all accrued and unpaid interest, shall be due and payable on the maturity date."
+    },
+    {
+      "title": "Prepayment",
+      "content": "The Borrower may prepay all or any portion of the outstanding principal balance at any time without penalty. Any prepayment shall be applied first to accrued and unpaid interest and then to the outstanding principal balance."
+    },
+    {
+      "title": "Late Payment",
+      "content": "If any payment due under this Agreement is not received within ten (10) days of its due date, the Borrower shall pay a late payment penalty equal to {{late_payment_penalty_percent}}% of the overdue amount. The imposition of a late payment penalty shall not constitute a waiver of the Lender's right to declare a default."
+    },
+    {
+      "title": "Security and Collateral",
+      "content": "As security for the repayment of the Loan, the Borrower hereby grants the Lender a security interest in the following collateral: {{collateral_description}}. The Borrower shall not sell, transfer, or encumber the collateral without the prior written consent of the Lender. If no collateral is specified, this Loan is unsecured."
+    },
+    {
+      "title": "Default",
+      "content": "The occurrence of any of the following events shall constitute a default under this Agreement:\n\n(a) Failure to make any payment when due;\n(b) Breach of any representation, warranty, or covenant in this Agreement;\n(c) Bankruptcy, insolvency, or assignment for the benefit of creditors by the Borrower;\n(d) Any material adverse change in the Borrower's financial condition.\n\nUpon the occurrence of a default, the Lender may declare the entire outstanding principal balance and all accrued interest immediately due and payable."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Loan Agreement as of the date first written above.\n\nLender: {{lender_name}}\nSignature: ___________________________\nDate: ___________________________\n\nBorrower: {{borrower_name}}\nSignature: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

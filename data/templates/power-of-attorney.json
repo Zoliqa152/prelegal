@@ -1,0 +1,63 @@
+{
+  "id": "power-of-attorney",
+  "name": "Power of Attorney",
+  "category": "Estate Planning",
+  "description": "A legal document authorizing one person to act on behalf of another in legal, financial, or medical matters.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "principal_name", "label": "Principal Name", "type": "text", "required": true },
+    { "key": "principal_address", "label": "Principal Address", "type": "text", "required": true },
+    { "key": "agent_name", "label": "Agent (Attorney-in-Fact) Name", "type": "text", "required": true },
+    { "key": "agent_address", "label": "Agent Address", "type": "text", "required": true },
+    { "key": "alternate_agent_name", "label": "Alternate Agent Name", "type": "text", "required": false },
+    { "key": "alternate_agent_address", "label": "Alternate Agent Address", "type": "text", "required": false },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "poa_type", "label": "Power of Attorney Type", "type": "select", "required": true, "options": ["General", "Limited", "Durable", "Springing"], "default": "General" },
+    { "key": "powers_granted", "label": "Specific Powers Granted", "type": "textarea", "required": true },
+    { "key": "expiration_date", "label": "Expiration Date", "type": "date", "required": false },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Declaration",
+      "content": "I, {{principal_name}}, residing at {{principal_address}} (the \"Principal\"), being of sound mind, do hereby appoint:\n\n{{agent_name}}, residing at {{agent_address}} (the \"Agent\" or \"Attorney-in-Fact\"),\n\nas my true and lawful agent to act on my behalf in the manner and for the purposes set forth in this {{poa_type}} Power of Attorney."
+    },
+    {
+      "title": "Alternate Agent",
+      "content": "If my designated Agent is unable or unwilling to serve, I appoint {{alternate_agent_name}}, residing at {{alternate_agent_address}}, as my alternate Agent, with all the same powers and authority granted herein."
+    },
+    {
+      "title": "Powers Granted",
+      "content": "I grant my Agent the following powers to act on my behalf:\n\n{{powers_granted}}\n\nThese powers shall include, where applicable, the authority to execute documents, enter into agreements, and take any and all actions that I could take myself in connection with the powers granted above."
+    },
+    {
+      "title": "General Authority",
+      "content": "In addition to the specific powers granted above, my Agent shall have the authority to:\n\n(a) Access and manage my financial accounts, including banking, investment, and retirement accounts;\n(b) Pay my bills, debts, and obligations;\n(c) File tax returns and manage tax matters on my behalf;\n(d) Manage, sell, or acquire real and personal property;\n(e) Enter into, modify, or terminate contracts on my behalf;\n(f) Engage professionals, including attorneys, accountants, and financial advisors, as needed."
+    },
+    {
+      "title": "Limitations",
+      "content": "This Power of Attorney does not authorize the Agent to:\n\n(a) Make, amend, or revoke my will or any codicil thereto;\n(b) Make decisions regarding my healthcare, unless specifically authorized;\n(c) Exercise powers for the Agent's own benefit, except as specifically authorized;\n(d) Transfer my assets to the Agent without fair consideration;\n(e) Perform any act that is contrary to my known wishes or best interests."
+    },
+    {
+      "title": "Duration and Revocation",
+      "content": "This Power of Attorney shall become effective on {{effective_date}}. I reserve the right to revoke this Power of Attorney at any time by providing written notice to the Agent. This Power of Attorney shall be automatically revoked upon my death."
+    },
+    {
+      "title": "Agent's Duties",
+      "content": "The Agent accepts the appointment and agrees to:\n\n(a) Act in the Principal's best interest at all times;\n(b) Avoid conflicts of interest;\n(c) Keep accurate records of all transactions conducted on behalf of the Principal;\n(d) Keep the Principal's property separate from the Agent's own property;\n(e) Act within the scope of authority granted by this document."
+    },
+    {
+      "title": "Third-Party Reliance",
+      "content": "Any third party who receives a copy of this Power of Attorney may rely upon the authority granted herein and the representations of the Agent. No third party shall be liable for acting in good faith reliance upon this Power of Attorney."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Power of Attorney shall be governed by and construed in accordance with the laws of {{governing_law_state}}."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, I have executed this Power of Attorney as of {{effective_date}}.\n\nPrincipal: {{principal_name}}\nSignature: ___________________________\nDate: ___________________________\n\nAgent: {{agent_name}}\nSignature (Acceptance): ___________________________\nDate: ___________________________\n\nWitness 1:\nSignature: ___________________________\nPrinted Name: ___________________________\nDate: ___________________________\n\nWitness 2:\nSignature: ___________________________\nPrinted Name: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

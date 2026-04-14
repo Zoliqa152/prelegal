@@ -1,0 +1,63 @@
+{
+  "id": "non-compete-agreement",
+  "name": "Non-Compete Agreement",
+  "category": "Employment",
+  "description": "A contract restricting an individual from engaging in competitive activities for a specified period and within a defined geographic area.",
+  "jurisdiction": "General",
+  "version": "1.0.0",
+  "fields": [
+    { "key": "company_name", "label": "Company Name", "type": "text", "required": true },
+    { "key": "company_address", "label": "Company Address", "type": "text", "required": true },
+    { "key": "individual_name", "label": "Individual Name", "type": "text", "required": true },
+    { "key": "individual_address", "label": "Individual Address", "type": "text", "required": true },
+    { "key": "effective_date", "label": "Effective Date", "type": "date", "required": true },
+    { "key": "job_title", "label": "Job Title / Role", "type": "text", "required": true },
+    { "key": "restricted_period_months", "label": "Restricted Period (Months)", "type": "number", "required": true, "default": 12 },
+    { "key": "geographic_area", "label": "Geographic Restriction Area", "type": "text", "required": true },
+    { "key": "business_description", "label": "Description of Restricted Business Activities", "type": "textarea", "required": true },
+    { "key": "consideration_description", "label": "Consideration Provided", "type": "textarea", "required": true },
+    { "key": "governing_law_state", "label": "Governing Law (State/Province)", "type": "text", "required": true }
+  ],
+  "sections": [
+    {
+      "title": "Preamble",
+      "content": "This Non-Compete Agreement (\"Agreement\") is entered into as of {{effective_date}} by and between:\n\n{{company_name}}, with an address at {{company_address}} (the \"Company\"), and\n\n{{individual_name}}, with an address at {{individual_address}} (the \"Individual\").\n\nThe Company and Individual are collectively referred to as the \"Parties.\""
+    },
+    {
+      "title": "Recitals",
+      "content": "WHEREAS, the Individual is or will be employed by or engaged with the Company in the capacity of {{job_title}};\n\nWHEREAS, the Individual will have access to the Company's confidential information, trade secrets, customer relationships, and proprietary business methods;\n\nWHEREAS, the Company has a legitimate business interest in protecting its confidential information, customer relationships, and competitive position;\n\nNOW, THEREFORE, in consideration of the mutual promises and covenants contained herein, and for other good and valuable consideration, the Parties agree as follows."
+    },
+    {
+      "title": "Consideration",
+      "content": "In exchange for the Individual's agreement to the restrictions contained in this Agreement, the Company shall provide the following consideration:\n\n{{consideration_description}}\n\nThe Individual acknowledges that the consideration provided is adequate and sufficient."
+    },
+    {
+      "title": "Non-Compete Covenant",
+      "content": "During the term of the Individual's relationship with the Company, and for a period of {{restricted_period_months}} months following the termination of that relationship (the \"Restricted Period\"), regardless of the reason for termination, the Individual shall not, directly or indirectly:\n\n(a) Engage in, own, manage, operate, control, be employed by, consult for, or participate in any business that competes with the following business activities of the Company:\n\n{{business_description}}\n\n(b) This restriction applies within the following geographic area: {{geographic_area}}."
+    },
+    {
+      "title": "Non-Solicitation",
+      "content": "During the Restricted Period, the Individual shall not, directly or indirectly:\n\n(a) Solicit, contact, or attempt to solicit any customer, client, or account of the Company for the purpose of providing competing products or services;\n(b) Solicit, recruit, or attempt to recruit any employee, contractor, or consultant of the Company;\n(c) Encourage or induce any customer, supplier, or business partner to terminate or reduce their relationship with the Company."
+    },
+    {
+      "title": "Confidentiality",
+      "content": "The Individual acknowledges that during their relationship with the Company, they have received or will receive confidential and proprietary information. The Individual agrees to hold all such information in strict confidence and not to use or disclose such information for any purpose other than performing their duties for the Company. This obligation shall survive the termination of this Agreement indefinitely."
+    },
+    {
+      "title": "Remedies",
+      "content": "The Individual acknowledges that a breach of this Agreement would cause irreparable harm to the Company that cannot be adequately compensated by monetary damages alone. In the event of a breach or threatened breach, the Company shall be entitled to seek injunctive relief, specific performance, and any other equitable remedies, in addition to all other remedies available at law."
+    },
+    {
+      "title": "Severability",
+      "content": "If any provision of this Agreement is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, such provision shall be modified to the minimum extent necessary to make it valid and enforceable, and the remaining provisions shall continue in full force and effect."
+    },
+    {
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by and construed in accordance with the laws of {{governing_law_state}}, without regard to its conflict of laws principles."
+    },
+    {
+      "title": "Signatures",
+      "content": "IN WITNESS WHEREOF, the Parties have executed this Non-Compete Agreement as of the date first written above.\n\nCompany: {{company_name}}\nSignature: ___________________________\nTitle: ___________________________\nDate: ___________________________\n\nIndividual: {{individual_name}}\nSignature: ___________________________\nDate: ___________________________"
+    }
+  ]
+}

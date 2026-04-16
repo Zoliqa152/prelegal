@@ -65,3 +65,11 @@ typings/
 
 # Compiled output
 *.js.map
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Docker
+docker-compose.override.yml

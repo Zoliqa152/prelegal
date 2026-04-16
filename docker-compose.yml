@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "9000:9000"
+    environment:
+      NODE_ENV: production
+      PORT: "9000"
+      DATA_DIR: /app/data/templates
+      DB_PATH: /app/data/prelegal.db
+    networks:
+      - prelegal-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    ports:
+      - "4200:80"
+    environment:
+      BACKEND_URL: http://backend:9000
+    depends_on:
+      - backend
+    networks:
+      - prelegal-net
+
+networks:
+  prelegal-net:
+    driver: bridge

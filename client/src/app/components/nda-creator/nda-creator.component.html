@@ -1,16 +1,17 @@
 @if (template()) {
   <div class="creator-layout">
-    <div class="form-panel">
-      <app-document-form
-        [fields]="template()!.fields"
-        [formGroup]="formGroup()"
+    <div class="chat-panel">
+      <app-chat-panel
+        [messages]="chatMessages()"
+        [loading]="chatLoading()"
+        (sendMessage)="onSendMessage($event)"
       />
     </div>
     <div class="preview-panel">
       <app-document-preview
         [sections]="resolvedSections()"
         [documentTitle]="template()!.name"
-        [ndaType]="ndaType()"
+        [ndaType]="'Mutual'"
       />
     </div>
   </div>

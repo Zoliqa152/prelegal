@@ -1,8 +1,11 @@
+import { config } from 'dotenv';
+import { join, resolve } from 'path';
+config({ path: resolve(__dirname, '../../.env') });
 import express from 'express';
 import cors from 'cors';
 import Database from 'better-sqlite3';
 import { readFileSync, existsSync, unlinkSync } from 'fs';
-import { join } from 'path';
+import chatRouter from './chat';
 
 const app = express();
 const PORT = Number(process.env['PORT']) || 9000;
@@ -51,6 +54,8 @@ app.get('/api/templates/:id', (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+app.use('/api/chat', chatRouter);
 
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok' });

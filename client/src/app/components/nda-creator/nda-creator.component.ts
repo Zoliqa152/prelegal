@@ -1,39 +1,56 @@
 import { Component, OnInit, OnDestroy, inject, signal, computed } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DocumentFormComponent } from '../document-form/document-form.component';
+import { ChatPanelComponent } from '../chat-panel/chat-panel.component';
 import { DocumentPreviewComponent } from '../document-preview/document-preview.component';
 import { TemplateApiService } from '../../services/template-api.service';
 import { TemplateEngineService } from '../../services/template-engine.service';
+import { ChatService } from '../../services/chat.service';
 import { DocumentTemplate, ResolvedSection } from '../../models/template.model';
+import { ChatMessage, NdaExtractedFields } from '../../models/chat.model';
 
 @Component({
   selector: 'app-nda-creator',
   standalone: true,
-  imports: [DocumentFormComponent, DocumentPreviewComponent, MatProgressSpinnerModule],
+  imports: [ChatPanelComponent, DocumentPreviewComponent, MatProgressSpinnerModule],
   templateUrl: './nda-creator.component.html',
   styleUrl: './nda-creator.component.scss',
 })
 export class NdaCreatorComponent implements OnInit, OnDestroy {
   private templateApi = inject(TemplateApiService);
   private templateEngine = inject(TemplateEngineService);
+  private chatService = inject(ChatService);
   private destroy$ = new Subject<void>();
 
   template = signal<DocumentTemplate | null>(null);
-  formGroup = signal<FormGroup>(new FormGroup({}));
-  formValues = signal<Record<string, unknown>>({});
+  chatMessages = signal<ChatMessage[]>([]);
+  chatLoading = signal(false);
+  extractedFields = signal<NdaExtractedFields>({
+    disclosing_party_name: null,
+    disclosing_party_address: null,
+    receiving_party_name: null,
+    receiving_party_address: null,
+    effective_date: null,
+    confidentiality_period_years: null,
+    governing_law_state: null,
+  });
+
+  formValues = computed<Record<string, unknown>>(() => {
+    const fields = this.extractedFields();
+    const values: Record<string, unknown> = { nda_type: 'Mutual' };
+    for (const [key, value] of Object.entries(fields)) {
+      if (value != null) {
+        values[key] = value;
+      }
+    }
+    return values;
+  });
 
   resolvedSections = computed<ResolvedSection[]>(() => {
     const tmpl = this.template();
     const values = this.formValues();
     if (!tmpl) return [];
     return this.templateEngine.resolve(tmpl.sections, values);
-  });
-
-  ndaType = computed(() => {
-    const values = this.formValues();
-    return (values['nda_type'] as string) || 'Mutual';
   });
 
   ngOnInit(): void {
@@ -43,13 +60,7 @@ export class NdaCreatorComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (tmpl) => {
           this.template.set(tmpl);
-          const group = this.buildFormGroup(tmpl);
-          this.formGroup.set(group);
-          this.formValues.set(group.value);
-
-          group.valueChanges
-            .pipe(takeUntil(this.destroy$))
-            .subscribe((values) => this.formValues.set(values));
+          this.requestGreeting();
         },
         error: (err) => {
           console.error('Failed to load template:', err);
@@ -62,12 +73,39 @@ export class NdaCreatorComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private buildFormGroup(tmpl: DocumentTemplate): FormGroup {
-    const controls: Record<string, FormControl> = {};
-    for (const field of tmpl.fields) {
-      const validators = field.required ? [Validators.required] : [];
-      controls[field.key] = new FormControl(field.default ?? null, validators);
-    }
-    return new FormGroup(controls);
+  onSendMessage(text: string): void {
+    const userMsg: ChatMessage = { role: 'user', content: text };
+    this.chatMessages.update((msgs) => [...msgs, userMsg]);
+    this.sendToApi();
+  }
+
+  private requestGreeting(): void {
+    this.sendToApi();
+  }
+
+  private sendToApi(): void {
+    this.chatLoading.set(true);
+    const messages = this.chatMessages();
+
+    this.chatService
+      .send(messages)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (response) => {
+          const assistantMsg: ChatMessage = { role: 'assistant', content: response.message };
+          this.chatMessages.update((msgs) => [...msgs, assistantMsg]);
+          this.extractedFields.set(response.extractedFields);
+          this.chatLoading.set(false);
+        },
+        error: (err) => {
+          console.error('Chat error:', err);
+          const errorMsg: ChatMessage = {
+            role: 'assistant',
+            content: 'Sorry, something went wrong. Please try again.',
+          };
+          this.chatMessages.update((msgs) => [...msgs, errorMsg]);
+          this.chatLoading.set(false);
+        },
+      });
   }
 }

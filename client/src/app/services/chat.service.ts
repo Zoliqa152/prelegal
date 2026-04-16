@@ -7,7 +7,7 @@ import { ChatMessage, ChatResponse } from '../models/chat.model';
 export class ChatService {
   private http = inject(HttpClient);
 
-  send(messages: ChatMessage[]): Observable<ChatResponse> {
-    return this.http.post<ChatResponse>('/api/chat', { messages });
+  send(messages: ChatMessage[], templateId?: string | null): Observable<ChatResponse> {
+    return this.http.post<ChatResponse>('/api/chat', { messages, templateId });
   }
 }

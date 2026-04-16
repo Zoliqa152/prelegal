@@ -74,11 +74,20 @@ Backend available at http://localhost:9000
 - Start/stop scripts for Mac, Linux, and Windows
 - Existing NDA creator works unchanged through the new infrastructure
 
-### PL-5: Add AI Chat for Mutual NDA (PR #6 - pending merge)
+### PL-5: Add AI Chat for Mutual NDA (merged)
 - Replaced static form with freeform AI chat that guides users through NDA creation step by step
 - Backend POST /api/chat endpoint using Vercel AI SDK with OpenAI gpt-4.1-mini and Zod structured outputs
 - AI extracts field values from natural language and returns them alongside conversational messages
 - Document preview updates in real time as fields are extracted from chat
 - NDA type hardcoded to Mutual per ticket scope
 - Chat panel component with message bubbles, typing indicator, and Enter-to-send
+
+### PL-6: Expand to all supported legal document types (PR #7 - pending merge)
+- Two-phase chat: Phase 1 lists all 10 document types for selection, Phase 2 collects fields dynamically
+- Dynamic Zod schemas built at runtime from each template's field definitions (no hardcoded schemas)
+- Graceful handling of unsupported document requests with closest-match suggestions
+- New generic DocumentCreatorComponent replaces NDA-specific NdaCreatorComponent
+- Dynamic toolbar title updates to show selected document type
+- Preview placeholder shown until document type is selected
+- Auto-download PDF when all fields are filled, manual download button still available
 

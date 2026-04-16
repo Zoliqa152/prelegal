@@ -16,13 +16,12 @@ import { PdfService } from '../../services/pdf.service';
 export class DocumentPreviewComponent {
   @Input({ required: true }) sections!: ResolvedSection[];
   @Input({ required: true }) documentTitle!: string;
-  @Input() ndaType = 'Mutual';
 
   private pdfService = inject(PdfService);
 
   downloadPdf(): void {
-    const typeSlug = this.ndaType.toLowerCase().replace(/\s+/g, '-');
-    const fileName = `nda-${typeSlug}-${Date.now()}.pdf`;
+    const slug = this.documentTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const fileName = `${slug}-${Date.now()}.pdf`;
     this.pdfService.generate(this.documentTitle, this.sections, fileName);
   }
 }

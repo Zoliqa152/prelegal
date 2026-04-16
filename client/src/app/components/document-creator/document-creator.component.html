@@ -1,0 +1,23 @@
+<div class="creator-layout">
+  <div class="chat-panel">
+    <app-chat-panel
+      [messages]="chatMessages()"
+      [loading]="chatLoading()"
+      (sendMessage)="onSendMessage($event)"
+    />
+  </div>
+  <div class="preview-panel">
+    @if (template()) {
+      <app-document-preview
+        [sections]="resolvedSections()"
+        [documentTitle]="template()!.name"
+      />
+    } @else {
+      <div class="preview-placeholder">
+        <div class="placeholder-icon">&#9878;</div>
+        <h3>Document Preview</h3>
+        <p>Select a document type in the chat to see a live preview here.</p>
+      </div>
+    }
+  </div>
+</div>

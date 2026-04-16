@@ -3,17 +3,17 @@ export interface ChatMessage {
   content: string;
 }
 
-export interface NdaExtractedFields {
-  disclosing_party_name: string | null;
-  disclosing_party_address: string | null;
-  receiving_party_name: string | null;
-  receiving_party_address: string | null;
-  effective_date: string | null;
-  confidentiality_period_years: number | null;
-  governing_law_state: string | null;
+export interface SelectionResponse {
+  phase: 'selection';
+  message: string;
+  selectedTemplateId: string | null;
 }
 
-export interface ChatResponse {
+export interface CollectionResponse {
+  phase: 'collection';
   message: string;
-  extractedFields: NdaExtractedFields;
+  extractedFields: Record<string, string | number | null>;
+  allFieldsFilled: boolean;
 }
+
+export type ChatResponse = SelectionResponse | CollectionResponse;

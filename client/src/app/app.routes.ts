@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { NdaCreatorComponent } from './components/nda-creator/nda-creator.component';
+import { DocumentCreatorComponent } from './components/document-creator/document-creator.component';
 
 export const routes: Routes = [
-  { path: '', component: NdaCreatorComponent },
+  { path: '', component: DocumentCreatorComponent },
 ];

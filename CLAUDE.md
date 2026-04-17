@@ -82,12 +82,19 @@ Backend available at http://localhost:9000
 - NDA type hardcoded to Mutual per ticket scope
 - Chat panel component with message bubbles, typing indicator, and Enter-to-send
 
-### PL-6: Expand to all supported legal document types (PR #7 - pending merge)
+### PL-6: Expand to all supported legal document types (merged)
 - Two-phase chat: Phase 1 lists all 10 document types for selection, Phase 2 collects fields dynamically
 - Dynamic Zod schemas built at runtime from each template's field definitions (no hardcoded schemas)
 - Graceful handling of unsupported document requests with closest-match suggestions
 - New generic DocumentCreatorComponent replaces NDA-specific NdaCreatorComponent
 - Dynamic toolbar title updates to show selected document type
 - Preview placeholder shown until document type is selected
-- Auto-download PDF when all fields are filled, manual download button still available
+- Manual "Download PDF" button always available in the preview panel
+
+### Change request: Ask before downloading (PR #8)
+- Removed unconditional auto-download when all fields were filled
+- AI now confirms collected details and asks the user whether they want to download
+- New `downloadConfirmed` boolean on the collection response; set to true only after explicit user consent
+- Client auto-downloads only when `allFieldsFilled && downloadConfirmed`, guarded to fire once
+- Revising fields after a "no" keeps the conversation open without triggering a download
 

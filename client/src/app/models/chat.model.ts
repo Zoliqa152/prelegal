@@ -14,6 +14,7 @@ export interface CollectionResponse {
   message: string;
   extractedFields: Record<string, string | number | null>;
   allFieldsFilled: boolean;
+  downloadConfirmed: boolean;
 }
 
 export type ChatResponse = SelectionResponse | CollectionResponse;

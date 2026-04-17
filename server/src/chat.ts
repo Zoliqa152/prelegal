@@ -99,7 +99,10 @@ Guidelines:
 - For date fields, accept natural language like "today", "next Monday", etc. and convert to YYYY-MM-DD format.
 - For select fields, only accept values from the given options list.
 - For fields with defaults, suggest the default value if the user isn't sure.
-- Once all required fields are collected, confirm the details with the user and let them know the document is ready to download.
+- Once all required fields are collected, confirm the details with the user and ask whether they would like to download the document now. Do not assume consent — wait for an explicit yes or no.
+- If the user says they do not want to download yet or wants to make changes, continue the conversation and help them revise any fields. Set downloadConfirmed to false.
+- Only set downloadConfirmed to true when the user has explicitly confirmed they want to download (e.g., "yes", "yes please", "download it", "go ahead"). When this happens, tell them their document is downloading now.
+- If you have not yet asked the user about downloading, or the user has not yet confirmed, set downloadConfirmed to false.
 - Always include ALL previously extracted fields in your response, even if they weren't mentioned in the latest message.
 - Set a field to null only if it hasn't been provided yet.
 - Set allFieldsFilled to true ONLY when every required field has a non-null value.`;
@@ -162,6 +165,7 @@ router.post('/', async (req: Request, res: Response) => {
         message: z.string(),
         extractedFields: fieldsSchema,
         allFieldsFilled: z.boolean(),
+        downloadConfirmed: z.boolean(),
       });
 
       const result = await generateObject({

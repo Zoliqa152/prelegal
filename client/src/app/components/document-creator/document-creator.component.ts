@@ -30,7 +30,7 @@ export class DocumentCreatorComponent implements OnInit, OnDestroy {
   chatMessages = signal<ChatMessage[]>([]);
   chatLoading = signal(false);
   extractedFields = signal<Record<string, string | number | null>>({});
-  private hasAutoDownloaded = false;
+  private hasDownloaded = false;
 
   formValues = computed<Record<string, unknown>>(() => {
     const fields = this.extractedFields();
@@ -104,7 +104,7 @@ export class DocumentCreatorComponent implements OnInit, OnDestroy {
 
   private onTemplateSelected(id: string): void {
     this.templateId.set(id);
-    this.hasAutoDownloaded = false;
+    this.hasDownloaded = false;
     this.templateApi
       .getTemplate(id)
       .pipe(takeUntil(this.destroy$))
@@ -125,9 +125,8 @@ export class DocumentCreatorComponent implements OnInit, OnDestroy {
 
   private onFieldsUpdated(response: CollectionResponse): void {
     this.extractedFields.set(response.extractedFields);
-    if (response.allFieldsFilled && !this.hasAutoDownloaded) {
-      this.hasAutoDownloaded = true;
-      // Small delay to let the preview render before downloading
+    if (response.allFieldsFilled && response.downloadConfirmed && !this.hasDownloaded) {
+      this.hasDownloaded = true;
       setTimeout(() => this.downloadPdf(), 500);
     }
   }
@@ -136,8 +135,7 @@ export class DocumentCreatorComponent implements OnInit, OnDestroy {
     const tmpl = this.template();
     if (!tmpl) return;
     const sections = this.resolvedSections();
-    const slug = tmpl.id;
-    const fileName = `${slug}-${Date.now()}.pdf`;
+    const fileName = `${tmpl.id}-${Date.now()}.pdf`;
     this.pdfService.generate(tmpl.name, sections, fileName);
   }
 }
